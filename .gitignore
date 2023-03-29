@@ -1,0 +1,17 @@
+# python cache
+__pycache__/
+*.py[cod]
+
+# pyinstaller builds
+build/
+dist/
+*.spec
+
+# vscode settings
+.vscode
+
+# os files
+.DS_Store
+
+# others
+ERROR_LOG.txt
