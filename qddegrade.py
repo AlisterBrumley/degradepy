@@ -16,9 +16,7 @@ warnings.simplefilter("error", RuntimeWarning)
 try:
     from pydub.effects import normalize
 except RuntimeWarning:
-    mb.showwarning(
-        message="ffmpeg not found!\n\nInstall ffmpeg and ffprobe to run"
-    )
+    mb.showwarning(message="ffmpeg not found!\n\nInstall ffmpeg and ffprobe to run")
     print("Python RuntimeWarning: ffmpeg not found!")
     exit()
 
@@ -49,9 +47,7 @@ def degrade():
     # confirm with user about the amount of files they are creating
     if (
         mb.askyesno(
-            message=(
-                "Are you sure you want to degrade " + list_length + " files?"
-            ),
+            message=("Are you sure you want to degrade " + list_length + " files?"),
             icon="question",
             title="Confirmation",
         )
@@ -96,9 +92,7 @@ def degrade():
             print(exc)
             try:
                 err_log = open("ERROR_LOG.txt", "a")
-                err_log.write(
-                    "\n\nEntry at " + str(dt.now()) + "\n" + str(exc)
-                )
+                err_log.write("\n\nEntry at " + str(dt.now()) + "\n" + str(exc))
                 err_log.close
                 print("ERROR LOGGED")
                 mb.showerror(
@@ -130,9 +124,7 @@ def degrade():
         # sample rate conversion
         if not sample_rate == "Source":
             try:
-                conv_temp_file = deg.sample_rate_conv(
-                    conv_temp_file, int(sample_rate)
-                )
+                conv_temp_file = deg.sample_rate_conv(conv_temp_file, int(sample_rate))
             except ValueError:
                 mb.showerror(
                     message=filename
@@ -290,9 +282,7 @@ out_dir_btn = ttk.Button(
     command=lambda: gh.select_out_dir(out_directory_sv),
 )
 out_dir_btn.grid(row=1, column=0, padx=10)
-out_dir_field = ttk.Entry(
-    out_dir_frame, width=40, textvariable=out_directory_sv
-)
+out_dir_field = ttk.Entry(out_dir_frame, width=40, textvariable=out_directory_sv)
 out_dir_field.grid(row=1, column=1)
 
 # degrade ttk.button
@@ -309,7 +299,7 @@ degrade_btn.grid(row=1, column=0, pady=(5, 0))
 
 # version number
 # currently 6th beta
-version_no = ttk.Label(main_window, text="v0.6b")
+version_no = ttk.Label(main_window, text="v0.7beta")
 version_no.pack(side="right")
 
 # window main function
