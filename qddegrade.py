@@ -299,7 +299,7 @@ degrade_btn.grid(row=1, column=0, pady=(5, 0))
 
 # version number
 # currently 6th beta
-version_no = ttk.Label(main_window, text="v0.7beta")
+version_no = ttk.Label(main_window, text="v0.7.0-beta")
 version_no.pack(side="right")
 
 # window main function
