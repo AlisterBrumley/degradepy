@@ -30,3 +30,6 @@ To run from a command line, simply execute with `python qddegrade.py` or `python
 - pydub
 - numpy
 - ffmpeg
+
+#### License info
+I created all the code in these `.py` files, but I have no owner/creatorship over any of the dependencies listed above. All dependencies are unmodified publically avaliable builds, that I acquired through pythons `pip` or the <a href=http://ffmpeg.org>FFmpeg</a> website
