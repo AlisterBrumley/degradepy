@@ -11,9 +11,9 @@ CONTENTS
 
 
  ----- INFO FOR MAC USERS -----
-Simply unzip and move to your application folder. The .app bundle might not be signed correctly for your version of MacOS and the OS might complain if you simply double click on it the first time. Instead, right click on the .app and click open. Accept the warning, and it should open normally from now on.
+Simply unzip and move to your application folder. The .app bundle might not be signed correctly for your version of MacOS, and it might complain if you simply double click on it the first time. Instead, right click on the .app and click open. Accept the warning, and it should open normally from now on.
 
-The bundle is packaged with ffmpeg but if you want to update the version or if it's having issues, it lives in qdd.app/Contents/Resources/ffmpeg. I bundled my own build using the latest source at time of writing, but it should run with any build.
+The bundle is packaged with ffmpeg but if you want to update the version or if it's having issues, it lives in qdd.app/Contents/Resources/ffmpeg. I bundled a static build of version 6 from https://evermeet.cx/ffmpeg/, but it should run with any build.
 
 If the program runs into errors during ffmpeg related tasks, it prints very long error messages. Rather then shove them in a dialog box, they will get dumped in an error log in your user folder at `~/.QDD_FFMPEG_ERROR_LOG.txt`
 
