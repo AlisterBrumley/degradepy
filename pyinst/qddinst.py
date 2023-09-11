@@ -102,7 +102,7 @@ def degrade():
                     message=(
                         filename
                         + in_format
-                        + " file open error, check ERROR_LOG.txt for details"
+                        + " file open error, check error log for details"
                         + "\n\nfile will be skipped!"
                     )
                 )
