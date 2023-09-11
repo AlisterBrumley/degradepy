@@ -1,7 +1,6 @@
  ----- QUICK AND DIRTY DEGRADER -----
-
 A simple tool for degrading digital audio.
-This readme is for the release versions for Mac OS or Windows
+This readme is for the release versions for Mac OS or Windows, or for creating your own exectuable
 For more basic information, check the github @ AstaBrum/degradepy
 
 CONTENTS
