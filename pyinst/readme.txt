@@ -15,7 +15,7 @@ Simply unzip and move to your application folder. The .app bundle might not be s
 
 The bundle is packaged with ffmpeg but if you want to update the version or if it's having issues, it lives in qdd.app/Contents/Resources/ffmpeg. I bundled a static build of version 6 from https://evermeet.cx/ffmpeg/, but it should run with any build.
 
-If the program runs into errors during ffmpeg related tasks, it prints very long error messages. Rather then shove them in a dialog box, they will get dumped in an error log in your user folder at `~/.QDD_FFMPEG_ERROR_LOG.txt`
+If the program runs into errors during ffmpeg related tasks, it prints very long error messages. Rather then shove them in a dialog box, they will get dumped in an error log in your user folder at `~/.qdd/FFMPEG_ERROR_LOG.txt`
 
 
  ----- INFO FOR WINDOWS USERS -----
@@ -31,8 +31,8 @@ I haven't released a linux version, as I can only produce an executable that isn
 
 It does however work on the system it was built on, so you're welcome to create your own for use locally. The next section should cover that.
 
-If you do bundle it, and the program runs into errors during ffmpeg related tasks, it prints very long error messages. Rather then shove them in a dialog box, they will get dumped in an error log in your user folder at `~/.QDD_FFMPEG_ERROR_LOG.txt`
+If you do bundle it, and the program runs into errors during ffmpeg related tasks, it prints very long error messages. Rather then shove them in a dialog box, they will get dumped in an error log in your user folder at `~/.qdd/FFMPEG_ERROR_LOG.txt`
 
 
  ----- IF YOU WANT TO MAKE YOUR OWN -----
-To build your own executable, you will need all the dependencies, including ffmpeg, as well as pyinstaller. Move the `ffmpeg` and `ffprobe` to `/pyinst/ffmpeg`. Then, simply run `pyinst-xxxx.sh` where xxxx is your OS platform.
+To build your own executable, you will need all the dependencies, including ffmpeg, as well as pyinstaller. Download the source, and move `deghelpers.py` and 'guihelpers.py` to `/pyinst` Move the `ffmpeg` and `ffprobe` to `/pyinst/ffmpeg". Then, simply run `pyinst-xxxx.sh` where xxxx is your OS platform.
