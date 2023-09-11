@@ -35,4 +35,4 @@ If you do bundle it, and the program runs into errors during ffmpeg related task
 
 
  ----- IF YOU WANT TO MAKE YOUR OWN -----
- To build your own executable, you will need all the dependencies, including ffmpeg, as well as pyinstaller. Move the `ffmpeg` and `ffprobe` to `/pyinst/ffmpeg`. Then, simply run `pyinst-xxxx.sh` where xxxx is your OS platform.
+To build your own executable, you will need all the dependencies, including ffmpeg, as well as pyinstaller. Move the `ffmpeg` and `ffprobe` to `/pyinst/ffmpeg`. Then, simply run `pyinst-xxxx.sh` where xxxx is your OS platform.
