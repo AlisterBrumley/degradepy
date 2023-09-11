@@ -15,11 +15,7 @@ except RuntimeWarning:
 
 # validate user inputs for degrade settings
 def input_validate(sample_rate, bit_rate, normalize_set):
-    if (
-        sample_rate == "Source"
-        and bit_rate == "Source"
-        and normalize_set is False
-    ):
+    if sample_rate == "Source" and bit_rate == "Source" and normalize_set is False:
         mb.showerror(message="You need to select a degrade setting!")
         raise RuntimeError
 
@@ -33,9 +29,7 @@ def input_validate(sample_rate, bit_rate, normalize_set):
             )
             raise TypeError
         elif int(sample_rate) > 48000 or int(sample_rate) < 300:
-            mb.showerror(
-                message="Sample rate needs to be set between 300 and 48000"
-            )
+            mb.showerror(message="Sample rate needs to be set between 300 and 48000")
             raise ValueError
         elif int(sample_rate) >= 300 and int(sample_rate) < 4000:
             if (
@@ -78,17 +72,23 @@ def dir_check(output_directory):
         raise NotADirectoryError
 
 
+# check if the error dir exist, if not, create it
+def err_dir_check(err_log):
+    # truncate filename
+    err_log_dir = os.path.dirname(err_log)
+    # checks if a file with matched pathname exists
+    if not os.path.isdir(err_log_dir):
+        try:
+            os.makedirs(err_log_dir)
+        except PermissionError:
+            raise PermissionError
+
+
 # checking for overwrites
-def overwrite_check(
-    overwrite_filename, overwrite_cnt, overwrite_all, lst_length
-):
+def overwrite_check(overwrite_filename, overwrite_cnt, overwrite_all, lst_length):
     if (
         mb.askyesno(
-            message=(
-                "File '"
-                + overwrite_filename
-                + "' exists, do you want to overwrite?"
-            ),
+            message=("File '" + overwrite_filename + "' exists, do you want to overwrite?"),
             icon="question",
             title="Overwrite?",
         )
@@ -148,9 +148,7 @@ def bit_actual_conv(audio_file):
 # bit shifting bit rate conversion (default bitrate setting)
 def bit_shift_conv(audio_file, bit_rate):
     # setting vars and checking for lower bitrate input
-    src_bitrate = (
-        audio_file.sample_width * 8
-    )  # sample_width returns bytes in a sample, * 8 = bit rate
+    src_bitrate = audio_file.sample_width * 8  # sample_width returns bytes in a sample, * 8 = bit rate
     br_diff = src_bitrate - bit_rate
     if br_diff <= 0:
         raise ValueError("input file below desired bit rate")

@@ -5,9 +5,11 @@ import tkinter as tk
 from tkinter import ttk
 from tkinter import messagebox as mb
 import os
+import sys
+import pydub
+from datetime import datetime as dt
 import deghelpers as deg
 import guihelpers as gh
-from datetime import datetime as dt
 import warnings
 
 warnings.simplefilter("error", RuntimeWarning)
@@ -90,6 +92,8 @@ def degrade():
             print("FILE OPEN ERROR WITH: " + filename + in_format)
             print(exc)
             try:
+                # create directory if doesn't exist
+                deg.err_dir_check(error_path)
                 err_log = open(error_path, "a")
                 err_log.write("\n\nEntry at " + str(dt.now()) + "\n" + str(exc))
                 err_log.close
@@ -166,10 +170,22 @@ def degrade():
     mb.showinfo(message="degrade complete!")
 
 
-# tracks where this file is for error reports
+# sets location for file
 where_is = __file__
 here_is = os.path.dirname(__file__)
-error_path = here_is + "/ERROR_LOG.txt"
+
+# tracks os and determines locations of ffmpeg and error log
+kernel_type = sys.platform
+if kernel_type == "darwin":
+    error_path = os.path.expanduser("~/.qdd/FFMPEG_ERROR_LOG.txt")  # currently dumping in the user folder
+    pydub.AudioSegment.converter = here_is + "/ffmpeg/ffmpeg"
+    pydub.utils.get_prober_name = lambda: here_is + "/ffmpeg/ffprobe"
+elif kernel_type == "linux":
+    error_path = os.path.expanduser("~/.qdd/FFMPEG_ERROR_LOG.txt")  # currently dumping in the user folder
+elif kernel_type == "win32":
+    error_path = "./FFMPEG_ERROR_LOG.TXT"
+    pydub.AudioSegment.converter = here_is + "/ffmpeg/ffmpeg"
+    pydub.utils.get_prober_name = lambda: here_is + "/ffmpeg/ffprobe"
 
 # main window setup
 main_window = tk.Tk()
