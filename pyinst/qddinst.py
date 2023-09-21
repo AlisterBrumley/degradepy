@@ -182,6 +182,8 @@ if kernel_type == "darwin":
     pydub.utils.get_prober_name = lambda: here_is + "/ffmpeg/ffprobe"
 elif kernel_type == "linux":
     error_path = os.path.expanduser("~/.qdd/FFMPEG_ERROR_LOG.txt")  # currently dumping in the user folder
+    pydub.AudioSegment.converter = here_is + "/ffmpeg/ffmpeg"
+    pydub.utils.get_prober_name = lambda: here_is + "/ffmpeg/ffprobe"
 elif kernel_type == "win32":
     error_path = "./FFMPEG_ERROR_LOG.TXT"
     pydub.AudioSegment.converter = here_is + "/ffmpeg/ffmpeg"
