@@ -174,20 +174,17 @@ def degrade():
 where_is = __file__
 here_is = os.path.dirname(__file__)
 
+# determines locations of ffmpeg
+pydub.AudioSegment.converter = here_is + "/ffmpeg/ffmpeg"
+pydub.utils.get_prober_name = lambda: here_is + "/ffmpeg/ffprobe"
+
 # tracks os and determines locations of ffmpeg and error log
 kernel_type = sys.platform
-if kernel_type == "darwin":
-    error_path = os.path.expanduser("~/.qdd/FFMPEG_ERROR_LOG.txt")  # currently dumping in the user folder
-    pydub.AudioSegment.converter = here_is + "/ffmpeg/ffmpeg"
-    pydub.utils.get_prober_name = lambda: here_is + "/ffmpeg/ffprobe"
-elif kernel_type == "linux":
-    error_path = os.path.expanduser("~/.qdd/FFMPEG_ERROR_LOG.txt")  # currently dumping in the user folder
-    pydub.AudioSegment.converter = here_is + "/ffmpeg/ffmpeg"
-    pydub.utils.get_prober_name = lambda: here_is + "/ffmpeg/ffprobe"
+if kernel_type == "darwin" or kernel_type == "linux":
+    error_path = os.path.expanduser("~/.qdd/FFMPEG_ERROR_LOG.txt")
 elif kernel_type == "win32":
     error_path = "./FFMPEG_ERROR_LOG.TXT"
-    pydub.AudioSegment.converter = here_is + "/ffmpeg/ffmpeg"
-    pydub.utils.get_prober_name = lambda: here_is + "/ffmpeg/ffprobe"
+
 
 # main window setup
 main_window = tk.Tk()
