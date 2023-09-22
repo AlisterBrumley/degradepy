@@ -164,10 +164,40 @@ def degrade():
                 + "\n\nCheck output directory permissions and try again"
             )
             return
+        except Exception as exc:
+            print("FILE EXPORT ERROR WITH: " + out_filename)
+            print(exc)
+            try:
+                err_log = open(error_path, "a")
+                err_log.write("\n\nEntry at " + str(dt.now()) + "\n" + str(exc))
+                err_log.close
+                print("ERROR LOGGED")
+                mb.showerror(
+                    message=(
+                        filename
+                        + in_format
+                        + " file export error, check error log for details"
+                        + "\n\nfile will be skipped!"
+                    )
+                )
+                continue
+            except PermissionError:
+                print("PERMISSION ERROR: COULD NOT CREATE/APPEND ERROR LOG")
+                mb.showerror(
+                    message=(
+                        filename
+                        + in_format
+                        + " file export error. error log could not be created"
+                        + " or written to due to permissions issues"
+                        + "\n\nfile will be skipped!"
+                    )
+                )
+                continue
 
     # clearing list and notifying user
     gh.clear_list(file_list_sv, file_list)
     mb.showinfo(message="degrade complete!")
+    # END OF FUNCTION
 
 
 # sets location for file
@@ -181,9 +211,9 @@ pydub.utils.get_prober_name = lambda: here_is + "/ffmpeg/ffprobe"
 # tracks os and determines locations of ffmpeg and error log
 kernel_type = sys.platform
 if kernel_type == "darwin" or kernel_type == "linux":
-    error_path = os.path.expanduser("~/.qdd/FFMPEG_ERROR_LOG.txt")
+    error_path = os.path.expanduser("~/.QDD_ERROR_LOG.txt")
 elif kernel_type == "win32":
-    error_path = "./FFMPEG_ERROR_LOG.TXT"
+    error_path = "./QDD_ERROR_LOG.TXT"
 
 
 # main window setup
