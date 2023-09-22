@@ -1,9 +1,10 @@
  ----- QUICK AND DIRTY DEGRADER -----
 A simple tool for degrading digital audio.
+Compatible with Windows 10 or newer, Mac OS 10.13 or newer, and Linux with kernel 4.19 or newer
+
 This readme is for the release versions for Mac OS, Windows and Linux, but includes instructions creating your own exectuable.
 For more basic information, check the github @ AstaBrum/degradepy
 
-Compatible with Windows 10 or newer, Mac OS 10.13 or newer, and Linux with kernel 4.19 or newer
 
 CONTENTS
 - Mac
