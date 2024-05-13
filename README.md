@@ -1,4 +1,4 @@
-# Quick and Dirty audio Degrader
+# Audio Degrader
 
 Simple GUI program, that allows degrading (downsampling and bit decimation) of audio samples. Coded in Python, and compatible with MacOS, Windows and Linux.
 
